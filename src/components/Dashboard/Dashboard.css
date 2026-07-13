@@ -1,0 +1,109 @@
+/* Dashboard */
+
+.dashboard{
+    flex: 1;
+    min-height: 100vh;
+    padding: 30px;
+    background: #e8eefc;
+}
+
+/* Heading */
+
+.dashboard h1{
+    text-align: center;
+    color: #1e3a8a;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Change Name Button */
+
+.dashboard > button{
+    display: block;
+    margin: 0 auto 30px;
+    padding: 10px 20px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dashboard > button:hover{
+    background: #1d4ed8;
+}
+
+/* Cards */
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 20px;
+}
+
+/* Card */
+
+.card{
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 5px 12px rgba(0,0,0,0.15);
+}
+
+.card h2{
+    color: #2563eb;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.card p{
+    color: #555;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+
+.card button{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover{
+    background: #1d4ed8;
+}
+
+/* Student Array */
+
+.card p:last-child{
+    color: #000;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .dashboard{
+        padding:20px;
+    }
+
+    .dashboard h1{
+        font-size:28px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+}

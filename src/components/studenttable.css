@@ -1,0 +1,46 @@
+.student-table-container{
+    width: 90%;
+    margin: 30px auto;
+}
+
+.student-table-container h2{
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.student-table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.student-table th{
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.student-table td{
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.student-table tr:nth-child(even){
+    background-color: #f8f9fa;
+}
+
+.student-table tr:hover{
+    background-color: #eaf4ff;
+    transition: 0.3s;
+}
+
+.no-student{
+    text-align: center;
+    color: red;
+    font-size: 22px;
+    margin-top: 20px;
+}

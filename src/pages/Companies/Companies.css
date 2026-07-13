@@ -1,0 +1,86 @@
+.companies {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+  text-align: center;
+}
+
+.companies h1 {
+  font-size: 36px;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+.company-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.company-card {
+  width: 280px;
+  padding: 25px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.company-card:hover {
+  transform: translateY(-8px);
+}
+
+.company-card h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.company-card p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.details-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.details-btn:hover {
+  background: #217dbb;
+}
+
+
+/* Company Details Page */
+
+.company-details {
+  min-height: 100vh;
+  background: #f5f7fb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.company-details h1 {
+  font-size: 45px;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+.company-details p {
+  font-size: 20px;
+  color: #444;
+  margin: 10px;
+}
+
+.company-details .details-btn {
+  margin-top: 25px;
+}
