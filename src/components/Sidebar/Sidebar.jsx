@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
+import Login from "../../pages/Login/Login";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
+  const navigate=useNavigate();
+  function Logout(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  }
   return (
     <div className="sidebar">
       <ul>
