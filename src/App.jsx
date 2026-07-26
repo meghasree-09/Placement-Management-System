@@ -14,6 +14,9 @@ import Layout from './components/Layout/Layout'
 import Companies from "./pages/Companies/Companies";
 import Students from "./pages/Students/Students";
 import NotFound from "./pages/NotFound/NotFound";
+import EditStudent from "./pages/EditStudent/EditStudent";
+import AuthRegister from './pages/authentication/authRegistration'
+import ProtectedRoute from './components/ProtectedRoute'
 
 
 
@@ -49,7 +52,11 @@ import NotFound from "./pages/NotFound/NotFound";
 //   )
 // };
 function App(){
-  const [students,setStudents]=useState([])
+    const [students,setStudents]=useState(()=>{
+    const savedStudents = localStorage.getItem("students");
+    return savedStudents ? JSON.parse(savedStudents) : [];
+  });
+
   function addStudent(){
     setStudents(students+1)
     console.log(students)
@@ -79,20 +86,28 @@ function App(){
 
     <Route path="/login" element={<Login/>}/>
 
-    <Route path="/register" element={<Register/>}/>
+    <Route path="/auth/register" element={<AuthRegister />} />
+    {/* <Route path="/register" element={<Register students={students} setStudents={setStudents} />}/> */}
 
-    <Route path="/dashboard" element={<Dashboard/>}/>
+    <Route path="/dashboard" element={
+      <ProtectedRoute>
+        <Dashboard/>
+        </ProtectedRoute>}/>
     <Route path="/companies" element={<Companies />} />
     
 
-    <Route path="/students" element={<Students />} />
-    <Route path="/students/:id" element={<Student />} />
+    <Route path="/students" element={
+      <ProtectedRoute><Students students={students} setStudents={setStudents} /></ProtectedRoute>} />
+    <Route path="/students/:id" element={<ProtectedRoute><Student /></ProtectedRoute>} />
    
     <Route path="/companies/:id" element={<Companies />} />
-     
-  </Route>
-  <Route path="*" element={<NotFound />} />
+      
+    </Route>
+    <Route path="*" element={<NotFound />} />
 
+    <Route path="/students/edit/:id" element={<ProtectedRoute>
+      <EditStudent students={students} setStudents={setStudents} />
+      </ProtectedRoute>} />
 </Routes>
         {/* </div>
          <Footer/> */}
