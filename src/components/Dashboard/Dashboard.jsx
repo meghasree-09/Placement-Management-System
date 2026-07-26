@@ -2,13 +2,14 @@ import { useState,useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./Dashboard.css";
 import Clock from "../Clock/Clock";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const [Totalstudents, setTotalstudents] = useState(250);
   const [Companies, setCompanies] = useState(35);
   const [Placed, setPlaced] = useState(180);
   const [Pending, setPending] = useState(70);
-
+  const navigate=useNavigate();
   const [Name, setName] = useState("Megha");
 
   const [students, setStudents] = useState([]);
@@ -41,8 +42,11 @@ function Dashboard() {
     setTotalstudents(250);
   }
   useEffect(()=>{
-    alert("Welcome Admin")
-  },[]);
+    const token = localStorage.getItem("token");
+    if (!token){
+      Navigate("/login");
+    }
+  },[navigate]);
 
   return (
     <div className="dashboard">
