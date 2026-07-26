@@ -1,45 +1,47 @@
 import { useState } from "react";
-import Dashboard from "../../components/Dashboard/Dashboard";
+import { useNavigate } from "react-router-dom";
+import api from "../../api/api";
 import "./Login.css";
 
 function Login() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [messageColor, setMessageColor] = useState("");
-  //loading state
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
-    setLoading(true)
-    setTimeout(()=>{
-         if (email === "mouni@gmail.com" && password === "mouni22") {
-      setMessage("Login Successful");
-      setMessageColor("green");
-
-      setTimeout(() => {
-        setIsLoggedIn(true);
-      }, 2000);
-    } else {
-      setMessage(" Invalid Email or Password");
-      setMessageColor("red");
+  async function  handleLogin () {
+    try{
+    setLoading(true);
+    const user={
+      email,
+      password
     }
-    setLoading(false);
-
-    },2000);
-   
-  };
-
-  if (isLoggedIn) {
-    return <Dashboard />;
+    const response =await api.post("/auth/login",user)
+    
+    localStorage.setItem(
+      "token",
+      response.data.token
+    )
+    localStorage.setItem(
+      "user",
+      JSON.stringify(response.data.token)
+    )
+    navigate("/Dashboard")
+  }catch(error){
+    setMessage(
+      error.response?.data?.message || "Login failed"
+    );
+  }finally{
+    setLoading(false)
   }
-
+  }
   return (
     <div className="login-container">
       <div className="login-card">
-
         <h1 className="title">Placement Management System</h1>
 
         <input
@@ -84,10 +86,10 @@ function Login() {
         <button
           className="login-btn"
           onClick={handleLogin}
+          disabled={loading}
         >
-          Login
+          {loading ? "Loading..." : "Login"}
         </button>
-
       </div>
     </div>
   );
