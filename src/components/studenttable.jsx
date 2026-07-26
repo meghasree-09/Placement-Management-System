@@ -1,6 +1,6 @@
 import {Link,useParams} from "react-router-dom";
-function StudentTable({ students }) {
-  const {id}=useParams;
+function StudentTable({ students, deleteStudent }) {
+  // const {id}=useParams();
   return (
     <>
       {students.length === 0 ? 
@@ -15,20 +15,32 @@ function StudentTable({ students }) {
               <th>Phone</th>
               <th>Branch</th>
               <th>CGPA</th>
+              <th>profile pic</th>
+              <th>Actions</th>
             </tr>
           </thead>
 
           <tbody>
-            {students.map((student) => (
-              <tr key={id}>
-                <td>{id}</td>
-                <td>{student.StudentName}</td>
-                <td>{student.Email}</td>
-                <td>{student.Phone}</td>
-                <td>{student.Branch}</td>
-                <td>{student.Cgpa}</td>
+            {students.map((student,id) => (
+              <tr key={student._id}>
+                <td>{student._id+1}</td>
+                <td>{student.studentName}</td>
+                <td>{student.email}</td>
+                <td>{student.phone}</td>
+                <td>{student.branch}</td>
+                <td>{student.cgpa}</td>
                 <td>
-                  <Link to={`/students/${student.id}`}>View </Link>
+                  <img src={`http://localhost:8000/uploads/${student.image}`}
+                  width="80"
+                  height="80"
+                  alt={student.studentName}>
+                                 
+                  </img>
+                </td>
+                <td>
+                  <Link to={`/students/${student._id}`}>View </Link>
+                  <button onClick={() => { deleteStudent(student._id) }}>Delete</button>
+                  <Link to={`/students/edit/${student._id}`}>Edit</Link>
                 </td>
               </tr>
             ))}
