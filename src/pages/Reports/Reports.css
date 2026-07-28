@@ -1,0 +1,33 @@
+.reports {
+  padding: 30px;
+  text-align: center;
+}
+
+.reports h1 {
+  color: #1e3a8a;
+  margin-bottom: 30px;
+}
+
+.report-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.report-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.report-card h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.report-card p {
+  font-size: 28px;
+  color: #2563eb;
+  font-weight: bold;
+}
